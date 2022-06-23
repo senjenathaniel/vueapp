@@ -1,15 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div v-if="products.length">
+    <ul>
+      <li v-for="product in products" v-bind:key="product.id">
+        {{ product.title }} - {{ [product.price] }}
+      </li>
+    </ul>
+  </div>
+  <div v-else>
+    <p>No data to display</p>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+  data() {
+    return {
+      products: [
+        { id: 1, title: "Apple Watch", price: 50000 },
+        { id: 2, title: "Apple MacBook Pro", price: 12000 },
+        { id: 3, title: "Apple iMac", price: 25000 }
+      ],
+    };
   }
 }
 </script>
